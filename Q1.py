@@ -3,24 +3,18 @@ def question1(num):
     Qs1
     """
     # WRITE YOUR CODE HERE!
-    i = num // 2
-
-    def sum_of_div(x, y, z=0):
-        if x > 0:
-            if y % x == 0:
-                z += x
-                x -= 1
-                sum_of_div(x, y, z)
-            else:
-                pass
+    def is_num_per(main_num, div, sum_of_div):
+        if sum_of_div == main_num:
+            return True
         else:
-            return z
+            if div > 1:
+                if main_num % div == 0:
+                    sum_of_div += div
+                    is_num_per(main_num, div - 1, sum_of_div)
+                else:
+                    is_num_per(main_num, div - 1, sum_of_div)
+            elif div == 1:
+                sum_of_div += div
 
-    div_sum = sum_of_div(i, num)
-    if div_sum == num:
-        return True
-    else:
-        return False
-
-
-question1(67)
+    return is_num_per(num, num // 2, 0),
+print(question1(6))
