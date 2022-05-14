@@ -1,27 +1,3 @@
-def question1(num):
-    """
-    Qs1
-    """
-    # WRITE YOUR CODE HERE!
-    def sum_of_div(main_num, div):
-        if div == 1:
-            return div
-        elif div > 1:
-            if main_num % div == 0:
-                return sum_of_div(main_num, div-1) + div
-            else:
-                return sum_of_div(main_num, div-1)
-
-    return sum_of_div(num, num // 2) == num
-
-
-def question2(lst, x):
-    """
-    Qs2
-    """
-    # WRITE YOUR CODE HERE!
-
-
 def question3_a(mat, indices, epidemic):
     """
     Qs3a
@@ -63,10 +39,7 @@ def question3_a(mat, indices, epidemic):
 
     epidemic_spread(mat, row1, col1, epidemic)
 
-def question3_b(mat):
-    """
-    Qs3b
-    """
-    # WRITE YOUR CODE HERE!
 
-
+a = [[1, 0, 0, 3, 0], [0, 0, 2, 3, 0], [2, 0, 0, 2, 0], [0, 1, 2, 3, 3]]
+question3_a(a, (0, 1), 3)
+print(a)
