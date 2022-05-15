@@ -3,7 +3,6 @@ def question3_b(mat):
     Qs3b
     """
     # WRITE YOUR CODE HERE!
-
     def size_of_group(mat1, row, col):
         """
 
@@ -13,23 +12,12 @@ def question3_b(mat):
         :param num:
         :return:
         """
-        if mat1[row][col] == 0:
-            if col < len(mat1[0])-1 and mat1[row][col + 1] == 0:
-                mat3 = mat1[:]
-                mat3[row][col] = 1
-                return 1 + size_of_group(mat3, row, col + 1,)
-            elif col > 0 and mat1[row][col - 1] == 0:
-                mat3 = mat1[:]
-                mat3[row][col] = 1
-                return 1 + size_of_group(mat3, row, col - 1,)
-            elif row < len(mat1)-1 and mat1[row + 1][col] == 0:
-                mat3 = mat1[:]
-                mat3[row][col] = 1
-                return 1 + size_of_group(mat3, row + 1, col,)
-            elif row > 1 and mat1[row - 1][col] == 0:
-                mat3 = mat1[:]
-                mat3[row][col] = 1
-                return 1 + size_of_group(mat3, - 1, col,)
+        if len(mat1[0]) > col > -1 and len(mat1) > row > -1:
+            if mat1[row][col] == 0:
+                mat1[row][col] = 1
+                return 1 + size_of_group(mat1, row, col + 1) + size_of_group(mat1, row, col - 1) + size_of_group(mat1, row + 1,col) + size_of_group( mat1, - 1, col)
+            else:
+                return 0
         else:
             return 0
 
@@ -39,13 +27,17 @@ def question3_b(mat):
         if col2 == len(mat2[0]):
             if size_of_group(mat2, row2, col2) > count:
                 count = size_of_group(mat2, row2, col2)
-                return find_max_group(mat2, row2+1, 0, count)
+                return count, find_max_group(mat2, row2+1, 0, count)
         else:
             if size_of_group(mat2, row2, col2) > count:
                 count = size_of_group(mat2, row2, col2)
-                return find_max_group(mat2, row2, col2+1)
+                return count, find_max_group(mat2, row2, col2+1, count)
 
     return find_max_group(mat, 0, 0)
+
+
+a = [[1, 0, 0, 3, 0], [0, 0, 2, 3, 0], [2, 0, 0, 2, 0], [0, 1, 2, 3, 3]]
+print(question3_b(a, 0, 1))
 
 
 
